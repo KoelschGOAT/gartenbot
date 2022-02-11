@@ -13,6 +13,7 @@ app.get("/api/get", (req, res) => {
     if (err) {
       console.log(err);
     }
+    console.log("fetch")
     res.send(result);
   });
 });

@@ -1,10 +1,8 @@
-import './App.css';
-
+import "./App.css";
+import Routing from "./utils/Router";
 function App() {
   return (
-    <div className="App">
-     Test
-    </div>
+<Routing/>
   );
 }
 

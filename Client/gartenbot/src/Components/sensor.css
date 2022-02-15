@@ -1,4 +1,9 @@
 .LineChart{
     width: 900px;
     height: 500px;
+    color:white;
+
+}
+.output{
+    color:white;
 }

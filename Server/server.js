@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Route to get all posts
 app.get("/api/get", (req, res) => {
-  db.query("SELECT * FROM sensor", (err, result) => {
+  db.query("SELECT * FROM sensor LIMIT 10", (err, result) => {
     if (err) {
       console.log(err);
     }

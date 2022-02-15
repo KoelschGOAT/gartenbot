@@ -9,11 +9,14 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 
+
 ChartJS.register(
+  Filler,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -33,6 +36,7 @@ function Sensor() {
 
 
   const options = {
+   
     responsive: true,
     interaction: {
       mode: 'index',
@@ -40,24 +44,48 @@ function Sensor() {
     },
     stacked: false,
     plugins: {
-      title: {
-        display: true,
-        text: 'Bodenwerte',
+      legend: {
+        labels: {
+          color: "white",  // not 'fontColor:' anymore
+          // fontSize: 18  // not 'fontSize:' anymore
+          font: {
+            size: 18 // 'size' now within object 'font {}'
+          }
+        }
       },
-    },
+     
+    
+    },color:"white",
     scales: {
+      x:{
+        ticks:{
+          backgroundColor:'white',
+        },
+      },
       y: {
+        ticks:{
+          color:'white',
+        },
         type: 'linear',
         display: true,
         position: 'left',
-      },
+        
+        },
       y1: {
+        ticks:{
+          color:'white',
+        },
+      
         type: 'linear',
         display: true,
         position: 'right',
+        color:'white',
         grid: {
           drawOnChartArea: false,
         },
+        
+         
+      
       },
     },
   };
@@ -83,10 +111,10 @@ function Sensor() {
       },
     ],
   };
-  return <><div>{JSON.stringify(sensor, 2, null)}</div>
+  return <><div className="output">{JSON.stringify(sensor, 2, null)}</div>
 
 
-    <div className="LineChart" ><Line options={options} data={data} /></div></>
+    <div className="LineChart" ><Line options={options} data={data}/></div></>
 }
 
 export default Sensor;

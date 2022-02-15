@@ -17,7 +17,15 @@ app.get("/api/get", (req, res) => {
     res.send(result);
   });
 });
-
+app.get("/api/single", (req, res) => {
+  db.query("SELECT * FROM sensor LIMIT 1", (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("fetch")
+    res.send(result);
+  });
+});
 
 
 app.listen(PORT, () => {

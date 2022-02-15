@@ -16,7 +16,15 @@ body {
   text-decoration: none;
  
 }
-
+.navbar .green{
+  color:green
+}
+.navbar .yellow{
+  color:yellow
+}
+.navbar .red{
+  color:red
+}
 .navbar .brand-title {
   font-size: 1.5rem;
   margin: 0.5rem;
@@ -84,7 +92,15 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
-
+.navbar .green{
+  display:none;
+}
+.navbar .yellow{
+  display:none;
+}
+.navbar .red{
+  display:none;
+}
   .toggle-button {
     display: flex;
   }

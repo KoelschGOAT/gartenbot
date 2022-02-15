@@ -28,8 +28,7 @@ const Status = () => {
 
 
     return (<>
-        <div className=" wrapper"><div className="box circle red"></div><div className="box">Wasser nachfüllen</div></div>
-
+        <div className="wrapper"><div className="box circle red"></div><div className="box">Wasser nachfüllen</div></div>
     </>);
 }
 

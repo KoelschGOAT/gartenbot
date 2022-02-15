@@ -158,9 +158,9 @@ function Sensor() {
       },
     ],
   };
-  return <><div className="output">{JSON.stringify(sensor, 2, null)}</div>
+  return <><div className="output text-black">{JSON.stringify(sensor, 2, null)}</div>
 
-    <Status/>
+  
     <div className="LineChart" ><Line options={options} data={data}/></div>
     <div className="LineChart" ><Line options={options2} data={data2}/></div>
     </>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Status from "./Status"
 import './sensor.css'
 import {
   Chart as ChartJS,
@@ -46,7 +47,7 @@ function Sensor() {
     plugins: {
       legend: {
         labels: {
-          color: "white",  // not 'fontColor:' anymore
+          color: "black",  // not 'fontColor:' anymore
           // fontSize: 18  // not 'fontSize:' anymore
           font: {
             size: 18 // 'size' now within object 'font {}'
@@ -55,16 +56,16 @@ function Sensor() {
       },
      
     
-    },color:"white",
+    },color:"black",
     scales: {
       x:{
         ticks:{
-          backgroundColor:'white',
+          backgroundColor:'black',
         },
       },
       y: {
         ticks:{
-          color:'white',
+          color:'black',
         },
         type: 'linear',
         display: true,
@@ -73,13 +74,13 @@ function Sensor() {
         },
       y1: {
         ticks:{
-          color:'white',
+          color:'black',
         },
       
         type: 'linear',
         display: true,
-        position: 'right',
-        color:'white',
+        position: 'none',
+        color:'black',
         grid: {
           drawOnChartArea: false,
         },
@@ -87,6 +88,45 @@ function Sensor() {
          
       
       },
+    },
+  };
+  const options2 = {
+   
+    responsive: true,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    stacked: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: "black",  // not 'fontColor:' anymore
+          // fontSize: 18  // not 'fontSize:' anymore
+          font: {
+            size: 18 // 'size' now within object 'font {}'
+          }
+        }
+      },
+     
+    
+    },color:"black",
+    scales: {
+      x:{
+        ticks:{
+          backgroundColor:'black',
+        },
+      },
+      y: {
+        ticks:{
+          color:'black',
+        },
+        type: 'linear',
+        display: true,
+        position: 'left',
+        
+        },
+      
     },
   };
 
@@ -102,19 +142,28 @@ function Sensor() {
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         yAxisID: 'y',
       },
+      
+    ],
+  };
+  const data2 = {
+    labels: sensor.map(x => x.TimeStamp),
+    datasets: [
+      
       {
         label: 'Wasserpegel',
         data: sensor.map(x => x.pegel),
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y1',
+        yAxisID: 'y',
       },
     ],
   };
   return <><div className="output">{JSON.stringify(sensor, 2, null)}</div>
 
-
-    <div className="LineChart" ><Line options={options} data={data}/></div></>
+    <Status/>
+    <div className="LineChart" ><Line options={options} data={data}/></div>
+    <div className="LineChart" ><Line options={options2} data={data2}/></div>
+    </>
 }
 
 export default Sensor;

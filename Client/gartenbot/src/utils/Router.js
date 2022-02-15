@@ -1,14 +1,18 @@
 import * as React from "react";
-import { BrowserRouter as Router, Route ,Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sensor from '../Components/Sensor';
-import Chart from "../Components/chart";
+import Navbar from "../Components/Navbar/Navbar";
+import Settings from "../Components/settings/Settings";
+import Status from "../Components/Status"
 export default function Routing() {
   return (
     <Router>
+     <Navbar/>
       <Routes>
-        {" "}
-        <Route path="/" exact element={<Sensor />} />
-        <Route path="/chart"  element={<Chart />} />
+
+     
+        <Route path="/" exact element={ <Sensor />} />
+        <Route path="/settings" exact element={  <Status/> }></Route>
       </Routes>
     </Router>
   );

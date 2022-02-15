@@ -2,8 +2,7 @@ import "./App.css";
 import Routing from "./utils/Router";
 function App() {
   return (
-<Routing/>
-  );
+    <Routing />);
 }
 
 export default App;

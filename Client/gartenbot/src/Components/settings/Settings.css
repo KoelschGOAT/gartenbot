@@ -1,0 +1,70 @@
+.wrapper{
+    display:flex;
+    justify-content:center;
+}
+.device-content {
+    width: 400px;
+    height: 445px;
+    margin: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);}
+
+
+.device-content .header {
+    width: 100%;
+    height: 145px;
+    background: #4db6ac;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.device-content .header p {
+    color: #FFF;
+}
+
+.device-content .header p i.fa {
+    margin-right: 10px;
+}
+
+.device-content .header p span {
+    font-size: 2rem;
+    font-weight: 100;
+    
+}
+
+.device-content .header p span span {
+    font-weight: 600;
+}
+
+.device-content .body {
+    background: #FFF;
+    width: 100%;
+    height: calc(100% - 145px);
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.device-content .body .input-wrapper {
+ width: 50%;
+        
+}
+
+.device-content .body i.fa {
+    color: #d3d3d3;
+    margin-bottom: 20px;
+}
+
+.device-content .body p strong {
+    color: hsl(174, 42%, 51%);
+    cursor: pointer;
+}
+.device-content .body p strong:hover {
+   color : hsl(174, 42%, 40%);
+}

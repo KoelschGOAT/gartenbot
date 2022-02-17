@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useContext} from 'react';
 import axios from "axios";
 import { InputLabel, Select, MenuItem, FormControl } from "@mui/material";
-import "./Settings.css"
+import "./Settings.css";
+import drainContext from "../../utils/drainContext";
+import Cookies from 'universal-cookie';
+
+
+
 const Settings = () => {
   const [user, setUser] = useState([])
   const [selectedDrain, setSelectedDrain] = useState()
+  const {drain,setDrain}= useContext(drainContext);
   const getUser = () => {
     axios.get("http://localhost:2000/api/user")
       .then(res =>{ setUser(res.data)});
@@ -22,15 +28,18 @@ const Settings = () => {
   const handleOnChange = (e) => {
 
 
-    axios.put('http://localhost:2000/api/user/' + 1, { "drain": e.target.value })
+     axios.put('http://localhost:2000/api/user/' + 1, { "drain": e.target.value })
       .then(response => {
         console.log("Status: ", response.status);
         console.log("Data: ", response.data);
         
       }).catch(error => {
         console.error('Something went wrong!', error);
-      });
-      getUser();
+      });/*
+      getUser(); */
+      setDrain(e.target.value);
+      
+
   }
   return (
     <>
@@ -49,11 +58,11 @@ const Settings = () => {
             <div className="p-5 ">Aktueller Verbrauch:</div>
             <div className="input-wrapper">
               <FormControl fullWidth>
-                <InputLabel id="verbrauch">Verbrauch</InputLabel>
+                <InputLabel id="verbrauch"></InputLabel>
                 <Select
                   labelId="verbrauch"
                   id="verbrauch"
-                  value={user?.drain}
+                  value={drain}
                   label="Verbrauch"
                   onChange={handleOnChange}
                 >

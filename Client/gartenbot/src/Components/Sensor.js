@@ -32,15 +32,12 @@ ChartJS.register(
 
 function Sensor() {
   const [sensor, setSensor] = useState([]);
-  const [user, setUser] = useState([]);
+  
   useEffect(() => {
-    fetch("http://localhost:2000/api/get")
+    fetch("http://192.168.178.21:2000/api/get")
       .then((res) => res.json())
       .then((data) => { setSensor(data); console.log(data) });
-    fetch("http://localhost:2000/api/user")
-      .then((res) => res.json())
-      .then((data) => { setUser(data); console.log(data) });
-
+   
   }, []);
 
 
@@ -100,7 +97,7 @@ function Sensor() {
   };
   const options2 = {
 
-    responsive: true,
+    responsive: false,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -167,11 +164,12 @@ function Sensor() {
     ],
   };
   return <>
-
-    <Box><Card className="card"><CardContent><div className="LineChart" ><Line options={options} data={data} /></div></CardContent></Card></Box>
-
-    <Box ><Card className="card w-50 h-100   justify-center" variant="outlined"><CardContent><div className="LineChart" ><Line options={options2} data={data2} /></div></CardContent></Card></Box>
-   
+    <div className="wrapper ">
+      <div className="LineChart" >
+              <Line options={options} data={data} />
+            </div>
+      
+    </div>
   </>
 }
 

@@ -1,41 +1,7 @@
-
-.wrapper {
-  display:flex; 
-  justify-content:center;
-  flex-direction: row;
-  
-  overflow: hidden;
-   
-  
-}
-.LineChart{
-    
-    color:white;
-    margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width:1500px;
-    
-
-}
-
-
-/* On mouse-over, add a deeper shadow */
-.LineChart:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-
+.wrapper{display:flex; flex: auto;justify-content: center;
+margin-top:5rem;
+width:1000;}
+.LineChart{width:50%;}
 @media (max-width: 768px) {
-  .wrapper{
-    flex-direction: column;
-    
-  }
-  
-  .LineChart{
-    font-size: 1;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    margin:5px;
-width:auto;
-  }
-  
+  .LineChart{width:device-size;}
 }

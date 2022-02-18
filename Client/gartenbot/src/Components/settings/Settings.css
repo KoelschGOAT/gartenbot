@@ -1,6 +1,8 @@
 .wrapper{
     display:flex;
     justify-content:center;
+    flex-wrap:wrap;
+    float:right;
 }
 .device-content {
     width: 400px;

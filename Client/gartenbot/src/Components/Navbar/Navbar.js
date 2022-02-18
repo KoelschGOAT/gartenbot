@@ -22,7 +22,7 @@ const Navbar = () => {
             <nav className="navbar non-printable">
 
                 
-                <div className={` hidden md:block ${sensor.feuchte <30? "text-red-600" : ""}${sensor.feuchte >30&&sensor.feuchte <35? "text-yellow-400" : ""}${sensor.feuchte >35? "text-green-400" : ""}`}>{`${sensor.feuchte<30?"Die Erde ist zu trocken, Bitte jetzt gießen!":""}${sensor.feuchte >30&&sensor.feuchte <35? "Die Planze muss bald gegossen werden" : ""}${sensor.feuchte >35? "Die Planze hat genügend Wasser" : ""}`}</div>               
+                <div className={` hidden md:block ${sensor.feuchte <30? "text-red-600" : ""}${sensor.feuchte >30&&sensor.feuchte <35? "text-yellow-400" : ""}${sensor.feuchte >35? "text-green-400" : ""}`}>{`${sensor.feuchte<30?"Die Erde ist zu trocken, Bitte jetzt gießen!":""}${sensor.feuchte >30&&sensor.feuchte <35? "Die Pflanze muss bald gegossen werden" : ""}${sensor.feuchte >35? "Die Pflanze hat genügend Wasser" : ""}`}</div>               
             </nav>
         </div>
     );

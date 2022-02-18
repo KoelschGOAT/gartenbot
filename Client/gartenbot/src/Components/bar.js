@@ -1,11 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import drainContext from "../utils/drainContext"
 const Bar = () => {
+    const [sensor, setSensor] = useState([]);
+    const getLatest =() => {
+        fetch("http://localhost:2000/api/latest")
+        .then((res) => res.json())
+        .then((data) => { setSensor(data); });
+    }
+    useEffect(() => {
+        getLatest();
+    }, [])
     const { drain, setDrain } = useContext(drainContext);
     return (
 
         <div className="fixed flex flex-col  w-14 hover:w-64 2xl:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
+            
             <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                 <ul className="flex flex-col py-4 space-y-1">
                     <li className="px-5 hidden 2xl:block">

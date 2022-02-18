@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Box from '@mui/material/Box';
+
 
 import './sensor.css'
 import {
@@ -34,7 +32,7 @@ function Sensor() {
   const [sensor, setSensor] = useState([]);
   
   useEffect(() => {
-    fetch("http://192.168.178.21:2000/api/get")
+    fetch("http://localhost:2000/api/get")
       .then((res) => res.json())
       .then((data) => { setSensor(data); console.log(data) });
    
@@ -95,46 +93,7 @@ function Sensor() {
       },
     },
   };
-  const options2 = {
-
-    responsive: false,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    stacked: false,
-    plugins: {
-      legend: {
-        labels: {
-          color: "black",  // not 'fontColor:' anymore
-          // fontSize: 18  // not 'fontSize:' anymore
-          font: {
-            size: 18 // 'size' now within object 'font {}'
-          }
-        }
-      },
-
-
-    }, color: "black",
-    scales: {
-      x: {
-        ticks: {
-          backgroundColor: 'black',
-        },
-      },
-      y: {
-        ticks: {
-          color: 'black',
-        },
-        type: 'linear',
-        display: true,
-        position: 'left',
-
-      },
-
-    },
-  };
-
+  
 
 
   const data = {
@@ -150,21 +109,10 @@ function Sensor() {
 
     ],
   };
-  const data2 = {
-    labels: sensor.map(x => x.TimeStamp),
-    datasets: [
-
-      {
-        label: 'Wasserpegel in %',
-        data: sensor.map(x => x.pegel),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-        yAxisID: 'y',
-      },
-    ],
-  };
+  
   return <>
     <div className="wrapper ">
+     
       <div className="LineChart" >
               <Line options={options} data={data} />
             </div>

@@ -63,7 +63,7 @@ const Bar = () => {
 
 
                             <span className="ml-2 justify hidden 2xl:block  text-sm tracking-wide truncate">Verbrauch: </span>
-                            <span className={`ml-2 hidden 2xl:block text-sm tracking-wide truncate ${drain ==="Hoch"? "text-red-600" : ""}${drain==="Mittel"? "text-yellow-600" : ""}${drain ==="Niedrig"? "text-green-400" : ""}`}>{drain}</span>
+                            <span className={`ml-2 hidden 2xl:block text-sm tracking-wide truncate ${drain ==="Hoch"? "text-red-600" : ""}${drain==="Mittel"? "text-yellow-400" : ""}${drain ==="Niedrig"? "text-green-400" : ""}`}>{drain}</span>
                         </a>
                         
                     </li>

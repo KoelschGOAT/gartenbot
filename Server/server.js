@@ -44,7 +44,7 @@ app.put("/api/user/:user_id", (req, res) => {
     if (err) {
       console.log(err);
     }
-   
+   console.log(result)
     res.send(result);
   });
   

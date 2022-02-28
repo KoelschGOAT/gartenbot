@@ -1,7 +1,24 @@
-.wrapper{display:flex; flex: auto;justify-content: center;
-margin-top:5rem;
-width:1000;}
-.LineChart{width:50%;}
+.wrapper{display:flex; 
+  flex-direction: row;
+  
+  justify-content: space-between;
+  flex: 1 0 auto;
+
+margin-top:5rem;}
+.wrapper .inner{
+  display:flex;
+  flex-direction: column;
+  width: 50%;
+
+}
+.latest{
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  border-radius:5px; 
+}
+.LineChart{  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  margin-top:10px;
+  border-radius:5px;
+}  
 @media (max-width: 768px) {
   .LineChart{width:device-size;}
 }

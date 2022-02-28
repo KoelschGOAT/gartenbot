@@ -7,8 +7,6 @@ import drainContext from "../../utils/drainContext";
 
 
 const Settings = () => {
-  const [user, setUser] = useState([])
-  const [selectedDrain, setSelectedDrain] = useState()
   const {drain,setDrain}= useContext(drainContext);
   
   
@@ -17,10 +15,9 @@ const Settings = () => {
   const handleOnChange = (e) => {
 
 
-     axios.put('http://192.168.91.248:2000/api/user/' + 1, { "drain": e.target.value })
+     axios.put('http://localhost:2000/api/user/' + 1, { "drain": e.target.value })
       .then(response => {
-        console.log("Status: ", response.status);
-        console.log("Data: ", response.data);
+        
         
       }).catch(error => {
         console.error('Something went wrong!', error);

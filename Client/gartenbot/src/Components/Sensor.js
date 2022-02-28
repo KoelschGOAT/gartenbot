@@ -109,14 +109,16 @@ function Sensor() {
 
     ],
   };
-  
+  console.log(sensor)
   return <>
     <div className="wrapper ">
-     
+      <div className="inner  ">
+     <div className="latest ">{`Aktueller Wert: ${
+    sensor.feuchte}`}</div>
       <div className="LineChart" >
               <Line options={options} data={data} />
             </div>
-      
+      </div>
     </div>
   </>
 }

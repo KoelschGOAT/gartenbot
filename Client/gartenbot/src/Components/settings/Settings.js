@@ -32,7 +32,7 @@ const Settings = () => {
 
 
     
-      <div className="wrapperr">
+      <div className="wrapper">
         <div className="device-content">
           <div className="header">
             <p>

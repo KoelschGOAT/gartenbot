@@ -14,11 +14,22 @@
     margin-left: 200px;
 }
 
-.latest {
+.latestFeuchte {
     text-align: center;
     padding: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .3);
     border-radius: 5px;
+    width:49%;
+    float:right; white-space: pre-wrap;
+}
+.latestPegel {
+    text-align: center;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    width:49%;
+    float:left;
+    white-space: pre-wrap;
 }
 
 .LineChart {
@@ -35,5 +46,22 @@
         margin-left: 56px;
         width: 500px;
         flex-direction: row;
+        justify-content: left;
     }
+    .wrapper .inner {
+        justify-content: center;
+        margin-left: 0px;
+        width: 65%;
+    }
+    .wrapper .sensorWrapper{
+        display:flex;
+        flex-direction: column;
+    }
+    .latestFeuchte {
+        width: 100%;
+    }
+    .latestPegel {
+        width: 100%;
+    }
+    
 }

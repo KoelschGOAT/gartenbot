@@ -22,7 +22,7 @@ app.get("/api/latest", (req, res) => {
     if (err) {
       console.log(err);
     }
-    console.log("fetching latest")
+    console.log("fetching latest",result[0])
     res.send({"id":result[0].id , "pegel": result[0].pegel, "feuchte": result[0].feuchte, "TimeStamp": result[0].TimeStamp});
   });
 });

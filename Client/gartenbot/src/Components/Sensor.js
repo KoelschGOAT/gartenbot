@@ -30,6 +30,8 @@ ChartJS.register(
 );
 
 function Sensor() {
+  const WP_warning = 100;
+  const WP_danger = 130;
   const { drain } = useContext(drainContext)
   let preset = {}
   const [sensor, setSensor] = useState([]);
@@ -50,7 +52,7 @@ function Sensor() {
   }, []);
   preset = checkPreset(drain);
 
-  const options ={  
+  const options = {
 
     maintainAspectRatio: false,
     responsive: true,
@@ -109,7 +111,7 @@ function Sensor() {
 
 
   const data = {
-    labels: sensor.map((x) => {const d =  new Date(x.TimeStamp);return d.toLocaleTimeString() }),
+    labels: sensor.map((x) => { const d = new Date(x.TimeStamp); return d.toLocaleTimeString() }),
     datasets: [
       {
         label: 'Bodenfeuchte in %',
@@ -125,7 +127,17 @@ function Sensor() {
   return <>
     <div className="wrapper ">
       <div className="inner  ">
-        <div className={`latest `}>{`Aktueller Bodenfeuchte Wert: `}<span className={` ${`${latest.feuchte < preset["rot"] ? "text-red-600" : ""}${latest.feuchte <= preset["gruen"] && latest.feuchte >= preset?.rot ? "text-yellow-400" : ""}${latest.feuchte > preset["gruen"] ? "text-green-400" : ""}`}`}>{`${latest.feuchte}%`}</span></div>
+        <div className="sensorWrapper ">
+          <div className={`latestPegel `}>{`Wasserpegel:\n`}
+            <span className={` ${`${latest.pegel >= WP_warning && latest.pegel < WP_danger ? "text-yellow-400" : ""}`} ${latest.pegel > WP_danger ? "text-red-600":""}`}>
+            {`${latest.pegel >= WP_warning && latest.pegel < WP_danger ?  "Die Erde ist mit ausreichend Wasser gesätigt" : ""}${latest.pegel >= WP_danger ? "Achtung!!! Die Erde hat zu viel Wasser" : ""}`}
+            </span>
+          </div>
+          <div className={`latestFeuchte `}>{`Aktueller Bodenfeuchte Wert:\n `}
+            <span className={` ${`${latest.feuchte < preset["rot"] ? "text-red-600" : ""}${latest.feuchte <= preset["gruen"] && latest.feuchte >= preset?.rot ? "text-yellow-400" : ""}${latest.feuchte > preset["gruen"] ? "text-green-400" : ""}`}`}>{`${latest.feuchte}%`}
+            </span>
+          </div>
+        </div>
         <div className="LineChart" >
           <Line options={options} data={data} />
         </div>

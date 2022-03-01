@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-
-
+import React, { useEffect, useState, useContext } from 'react';
+import { checkPreset } from "./Navbar/Navbar"
+import drainContext from '../utils/drainContext';
+import dayjs from "dayjs";
 import './sensor.css'
 import {
   Chart as ChartJS,
@@ -29,18 +30,29 @@ ChartJS.register(
 );
 
 function Sensor() {
+  const { drain } = useContext(drainContext)
+  let preset = {}
   const [sensor, setSensor] = useState([]);
-  
-  useEffect(() => {
-    fetch("http://localhost:2000/api/get")
+  const [latest, setLatest] = useState([]);
+  const getLatest = async () => {
+    await fetch("http://localhost:2000/api/latest")
+      .then((res) => res.json())
+      .then((data) => { setLatest(data); });
+  }
+  const getSensorData = async () => {
+    await fetch("http://localhost:2000/api/get")
       .then((res) => res.json())
       .then((data) => { setSensor(data); console.log(data) });
-   
+  }
+  useEffect(() => {
+    getLatest()
+    getSensorData()
   }, []);
+  preset = checkPreset(drain);
 
+  const options ={  
 
-  const options = {
-
+    maintainAspectRatio: false,
     responsive: true,
     interaction: {
       mode: 'index',
@@ -53,7 +65,7 @@ function Sensor() {
           color: "black",  // not 'fontColor:' anymore
           // fontSize: 18  // not 'fontSize:' anymore
           font: {
-            size: 18 // 'size' now within object 'font {}'
+            size: 15 // 'size' now within object 'font {}'
           }
         }
       },
@@ -93,11 +105,11 @@ function Sensor() {
       },
     },
   };
-  
+
 
 
   const data = {
-    labels: sensor.map(x => x.TimeStamp),
+    labels: sensor.map((x) => {const d =  new Date(x.TimeStamp);return d.toLocaleTimeString() }),
     datasets: [
       {
         label: 'Bodenfeuchte in %',
@@ -113,11 +125,10 @@ function Sensor() {
   return <>
     <div className="wrapper ">
       <div className="inner  ">
-     <div className="latest ">{`Aktueller Wert: ${
-    sensor.feuchte}`}</div>
-      <div className="LineChart" >
-              <Line options={options} data={data} />
-            </div>
+        <div className={`latest `}>{`Aktueller Bodenfeuchte Wert: `}<span className={` ${`${latest.feuchte < preset["rot"] ? "text-red-600" : ""}${latest.feuchte <= preset["gruen"] && latest.feuchte >= preset?.rot ? "text-yellow-400" : ""}${latest.feuchte > preset["gruen"] ? "text-green-400" : ""}`}`}>{`${latest.feuchte}%`}</span></div>
+        <div className="LineChart" >
+          <Line options={options} data={data} />
+        </div>
       </div>
     </div>
   </>

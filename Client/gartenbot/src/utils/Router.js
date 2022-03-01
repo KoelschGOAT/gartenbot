@@ -1,4 +1,4 @@
-import React, { useState, useMemo,useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sensor from '../Components/Sensor';
 import Bar from "../Components/bar";
@@ -10,24 +10,24 @@ import axios from "axios";
 export default function Routing() {
   const [drain, setDrain] = useState(null);
   const value = useMemo(() => ({ drain, setDrain }), [drain, setDrain]);
-  
   useEffect(() => {
     if (drain === null) {
       axios.get("http://localhost:2000/api/user")
-        .then(res => { setDrain(res.data.drain) })
-      
-      }
-    
-  },[])
- 
+        .then(res => {setDrain(res.data.drain)});
+    }
+
+
+
+  }, [])
+
   return (
     <Router>
-      <drainContext.Provider value={value}>
-        <div className="container flex flex-wrap space-between ">
+      <drainContext.Provider value={ value }>
+        <div className="container flex ">
           <Navbar />
           <Bar />
           <Routes>
-            <Route path="/" exact element={<Sensor/>}/>
+            <Route path="/" exact element={<Sensor />} />
             <Route path="/settings" exact element={<Settings />} />
           </Routes>
         </div>

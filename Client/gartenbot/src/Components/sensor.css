@@ -1,24 +1,39 @@
-.wrapper{display:flex; 
-  flex-direction: row;
-  
-  justify-content: space-between;
-  flex: 1 0 auto;
-
-margin-top:5rem;}
-.wrapper .inner{
-  display:flex;
-  flex-direction: column;
-  width: 50%;
-
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-left: 10px;
+    justify-content: center;
+    flex: 1 0 auto;
+    margin-top: 5rem;
 }
-.latest{
-  box-shadow: 0 0 5px rgba(0,0,0,.3);
-  border-radius:5px; 
+
+.wrapper .inner {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 200px;
 }
-.LineChart{  box-shadow: 0 0 5px rgba(0,0,0,.3);
-  margin-top:10px;
-  border-radius:5px;
-}  
+
+.latest {
+    text-align: center;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+}
+
+.LineChart {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 60vmin;
+}
+
 @media (max-width: 768px) {
-  .LineChart{width:device-size;}
+    .wrapper {
+        margin-left: 0px;
+        margin-top: 10px;
+        margin-left: 56px;
+        width: 500px;
+        flex-direction: row;
+    }
 }

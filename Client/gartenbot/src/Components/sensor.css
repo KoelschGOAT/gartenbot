@@ -42,11 +42,11 @@
 @media (max-width: 768px) {
     .wrapper {
         margin-left: 0px;
-        margin-top: 10px;
+        margin-top: 1rem;
         margin-left: 56px;
         width: 500px;
         flex-direction: row;
-        justify-content: left;
+        justify-content: center;
     }
     .wrapper .inner {
         justify-content: center;
@@ -59,9 +59,11 @@
     }
     .latestFeuchte {
         width: 100%;
+        margin-top:5px;
     }
     .latestPegel {
         width: 100%;
+        
     }
     
 }

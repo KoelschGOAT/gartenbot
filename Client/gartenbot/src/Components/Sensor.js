@@ -37,14 +37,14 @@ function Sensor() {
   const [sensor, setSensor] = useState([]);
   const [latest, setLatest] = useState([]);
   const getLatest = async () => {
-    await fetch("http://localhost:2000/api/latest")
+    await fetch("http://192.168.93.73:2000/api/latest")
       .then((res) => res.json())
       .then((data) => { setLatest(data); });
   }
   const getSensorData = async () => {
-    await fetch("http://localhost:2000/api/get")
+    await fetch("http://192.168.93.73:2000/api/get")
       .then((res) => res.json())
-      .then((data) => { setSensor(data); console.log(data) });
+      .then((data) => { setSensor(data); });
   }
   useEffect(() => {
     getLatest()
@@ -124,6 +124,7 @@ function Sensor() {
     ],
   };
   console.log(sensor)
+  console.log(latest);
   return <>
     <div className="wrapper ">
       <div className="inner  ">

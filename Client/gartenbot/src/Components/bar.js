@@ -4,7 +4,7 @@ import drainContext from "../utils/drainContext"
 const Bar = () => {
     const [sensor, setSensor] = useState([]);
     const getLatest =() => {
-        fetch("http://localhost:2000/api/latest")
+        fetch("http://192.168.93.73:2000/api/latest")
         .then((res) => res.json())
         .then((data) => { setSensor(data); });
     }

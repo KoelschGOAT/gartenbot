@@ -7,22 +7,22 @@ const PORT = 2000;
 app.use(cors());
 app.use(express.json());
 
-// Route to get all posts
+// Route to get all sensordata
 app.get("/api/get", (req, res) => {
   db.query("SELECT * FROM sensor ORDER BY TimeStamp ASC LIMIT 10", (err, result) => {
     if (err) {
       console.log(err);
     }
-    console.log("fetching all")
+    console.log("fetching all",result)
     res.send(result);
   });
 });
 app.get("/api/latest", (req, res) => {
-  db.query("SELECT * FROM sensor s1 WHERE TimeStamp = (SELECT MAX(TimeStamp) FROM sensor s2 WHERE s1.id = s2.id) ORDER BY id, timeStamp LIMIT 1", (err, result) => {
+  db.query("SELECT * FROM   sensor ORDER  BY TimeStamp DESC LIMIT  1;", (err, result) => {
     if (err) {
       console.log(err);
     }
-    console.log("fetching latest",result[0])
+    console.log("fetching latest",result)
     res.send({"id":result[0].id , "pegel": result[0].pegel, "feuchte": result[0].feuchte, "TimeStamp": result[0].TimeStamp});
   });
 });

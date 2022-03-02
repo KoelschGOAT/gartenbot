@@ -15,7 +15,7 @@ const Settings = () => {
   const handleOnChange = (e) => {
 
 
-     axios.put('http://localhost:2000/api/user/' + 1, { "drain": e.target.value })
+     axios.put('http://192.168.93.73:2000/api/user/' + 1, { "drain": e.target.value })
       .then(response => {
         
         
@@ -32,7 +32,8 @@ const Settings = () => {
 
 
     
-      <div className="wrapper">
+      <div className="wrapperr">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <div className="device-content">
           <div className="header">
             <p>

@@ -12,7 +12,7 @@ export default function Routing() {
   const value = useMemo(() => ({ drain, setDrain }), [drain, setDrain]);
   useEffect(() => {
     if (drain === null) {
-      axios.get("http://localhost:2000/api/user")
+      axios.get("http://192.168.93.73:2000/api/user")
         .then(res => {setDrain(res.data.drain)});
     }
 

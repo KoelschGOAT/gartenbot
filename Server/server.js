@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Route to get all sensordata
 app.get("/api/get", (req, res) => {
-  db.query("SELECT * FROM sensor ORDER BY TimeStamp ASC LIMIT 10", (err, result) => {
+  db.query("SELECT * FROM sensor ORDER BY id DESC LIMIT 10", (err, result) => {
     if (err) {
       console.log(err);
     }

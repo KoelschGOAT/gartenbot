@@ -1,6 +1,7 @@
 .wrapperr {
+    display: flex;
     flex-direction: row-reverse;
-    padding-left: 10px;
+    margin-left:180px;
     justify-content: center;
     flex: 1 0 auto;
     margin-top: 5rem;
@@ -72,4 +73,18 @@
 }
 .device-content .body p strong:active {
     background-color: #111827;
+}
+
+@media (max-width: 768px) {
+    .wrapperr {
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 0px;
+        margin-top: 1rem;
+        margin-left: 56px;
+        
+        
+    }
+    
+    
 }

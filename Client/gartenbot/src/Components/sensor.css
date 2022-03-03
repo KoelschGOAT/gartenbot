@@ -5,6 +5,7 @@
     justify-content: center;
     flex: 1 0 auto;
     margin-top: 5rem;
+    margin-left: 6rem;
 }
 
 .wrapper .inner {
@@ -21,6 +22,7 @@
     border-radius: 5px;
     width:49%;
     float:right; white-space: pre-wrap;
+  
 }
 .latestPegel {
     text-align: center;
@@ -30,6 +32,7 @@
     width:49%;
     float:left;
     white-space: pre-wrap;
+
 }
 
 .LineChart {

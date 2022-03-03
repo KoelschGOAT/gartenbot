@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import drainContext from "../utils/drainContext"
 const Bar = () => {
     const [sensor, setSensor] = useState([]);
-    const getLatest =() => {
-        fetch("http://192.168.93.73:2000/api/latest")
+    const getLatest =async () => {
+        await fetch("http://localhost:2000/api/latest")
         .then((res) => res.json())
         .then((data) => { setSensor(data); });
     }

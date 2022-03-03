@@ -28,8 +28,8 @@ const Navbar = () => {
 
     const { drain, setDrain } = useContext(drainContext);
     const [latest, setLatest] = useState([]);
-    const getLatest = () => {
-        fetch("http://192.168.93.73:2000/api/latest")
+    const getLatest = async () => {
+        await fetch("http://192.168.93.73:2000/api/latest")
             .then((res) => res.json())
             .then((data) => { setLatest(data); });
     }

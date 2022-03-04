@@ -10,24 +10,28 @@ import axios from "axios";
 export default function Routing() {
   const [drain, setDrain] = useState(null);
   const value = useMemo(() => ({ drain, setDrain }), [drain, setDrain]);
+  // Fetching user setting for global State
   useEffect(() => {
     if (drain === null) {
       axios.get("http://192.168.93.73:2000/api/user")
-        .then(res => {setDrain(res.data.drain)});
+        .then(res => {
+          // setting the user setting as the global State
+          setDrain(res.data.drain)});
     }
 
 
 
   }, [])
-
+//Returning the The Routes and Components, that are permanantly shown aswell as the Global State Provider
   return (
     <Router>
       <drainContext.Provider value={ value }>
         <div className="container flex ">
+          {/* Navbar and Bar Components */}
           <Navbar />
           <Bar />
           <Routes>
-           
+           {/* Home Route and Settings Route*/}
             <Route path="/" exact element={<Sensor />} />
             <Route path="/settings" exact element={<Settings />} />
           </Routes>

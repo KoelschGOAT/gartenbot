@@ -1,3 +1,4 @@
+//importing and initialize all required packages
 const express = require("express");
 const db = require("./db");
 const cors = require("cors");
@@ -7,25 +8,25 @@ const PORT = 2000;
 app.use(cors());
 app.use(express.json());
 
-// Route to get all sensordata
+// Route to get all sensor data from the database
 app.get("/api/get", (req, res) => {
   db.query("SELECT * FROM sensor ORDER BY id DESC LIMIT 10", (err, result) => {
     if (err) {
       console.log(err);
     }
-    console.log("fetching all",result)
+    
     res.send(result);
   });
 });
+// Route to get the latest Sensor Data from the database
 app.get("/api/latest", (req, res) => {
   db.query("SELECT * FROM   sensor ORDER  BY TimeStamp DESC LIMIT  1;", (err, result) => {
-    if (err) {
-      console.log(err);
+    if (err) {console.log(err);
     }
-    console.log("fetching latest",result)
     res.send({"id":result[0].id , "pegel": result[0].pegel, "feuchte": result[0].feuchte, "TimeStamp": result[0].TimeStamp});
   });
 });
+// Route to get the user setting from the database
 app.get("/api/user", (req, res) => {
   db.query("SELECT * FROM user", (err, result,fields) => {
     if (err) {
@@ -37,7 +38,7 @@ app.get("/api/user", (req, res) => {
 });
 
 
-
+// Route to update the user setting from the database
 app.put("/api/user/:user_id", (req, res) => {
   
   db.query(`UPDATE user SET drain='${req.body.drain}' WHERE user_id=${req.params.user_id}`, (err, result) => {
@@ -50,7 +51,7 @@ app.put("/api/user/:user_id", (req, res) => {
   
 });
 
-
+// Portsetting, currently on PORT 2000
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });

@@ -85,6 +85,11 @@
         
         
     }
-    
+    .device-content{
+        width:80%;
+    }
+    .device-content .header p span{
+        font-size:20px;
+    }
     
 }

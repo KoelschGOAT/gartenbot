@@ -17,35 +17,6 @@ width: 100%;
   text-decoration: none;
  
 }
-.navbar .green{
-  color:green
-}
-.navbar .yellow{
-  color:yellow
-}
-.navbar .red{
-  color:red
-}
 
 
 
-
-@media (max-width: 640px) {
-  .notClickable{
-    display: none;
-  }
-  .navbar {
-    flex-direction: column;
-    align-items: flex-end;
-  }
-.navbar .green{
-  display:none;
-}
-.navbar .yellow{
-  display:none;
-}
-.navbar .red{
-  display:none;
-}
- 
-}

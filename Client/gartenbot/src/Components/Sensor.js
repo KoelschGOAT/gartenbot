@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { checkPreset } from "./Navbar/Navbar"
 import drainContext from '../utils/drainContext';
-import Button from '@mui/material/Button';
 import './sensor.css'
 import {
   Chart as ChartJS,
@@ -28,12 +27,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const reverseObj = (obj) => {
-  return Object.keys(obj).reverse().reduce((a, key, i) => {
-    a[key] = obj[key];
-    return a;
-  }, {})
-};
+
 function Sensor() {
   const WP_warning = 100;
   const WP_danger = 130;
@@ -41,7 +35,7 @@ function Sensor() {
   let preset = {}
   const [sensor, setSensor] = useState([]);
   const [latest, setLatest] = useState([]);
-  const [rerender, setRerender] = useState(0);
+
   const getLatest = async () => {
     await fetch("http://192.168.93.73:2000/api/latest")
       .then((res) => res.json())
@@ -51,25 +45,23 @@ function Sensor() {
     await fetch("http://192.168.93.73:2000/api/get")
       .then((res) => res.json())
       .then((data) => { setSensor(data.reverse()); });
+      
   }
-  const onClick=()=>{
-    getSensorData();
-  }
+
   useEffect(() => {
     getLatest()
     getSensorData()
     const interval = setInterval(() => {
-    getLatest()
-    getSensorData()
-    }, 60000);
-  
-    return () => clearInterval(interval);
-   
+      getLatest()
+      getSensorData()
+      }, 60000);
+    
+      return () => clearInterval(interval);
   }, []);
   preset = checkPreset(drain);
 
   const options = {
-    rerender,onClick,
+
     maintainAspectRatio: false,
     responsive: true,
     interaction: {
@@ -127,7 +119,7 @@ function Sensor() {
 
 
   const data = {
-    labels: sensor.map((x) => { const d = new Date(x.TimeStamp); return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }),
+    labels: sensor.map((x) => { const d = new Date(x.TimeStamp); return d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}); }),
     datasets: [
       {
         label: 'Bodenfeuchte in %',
@@ -144,19 +136,20 @@ function Sensor() {
   return <>
     <div className="wrapper ">
       <div className="inner  ">
+        <div className="mobileInfo"></div>
         <div className="sensorWrapper ">
+        <div className={`latestFeuchte `}>{`Bodenfeuchte :\n `}
+            <span className={` ${`${latest.feuchte < preset["rot"] ? "text-red-600" : ""}${latest.feuchte <= preset["gruen"] && latest.feuchte >= preset?.rot ? "text-yellow-400" : ""}${latest.feuchte > preset["gruen"] ? "text-green-600" : ""}`}`}>{`${latest.feuchte}%`}
+            </span>
+          </div>
           <div className={`latestPegel `}>{`Wasserpegel:\n`}
-            <span className={` ${`${latest.pegel >= WP_warning && latest.pegel < WP_danger ? "text-yellow-400" : ""}`} ${latest.pegel > WP_danger ? "text-red-600" : ""}${latest.pegel < 100 ? "text-green-600" : ""}`}>
-              {`${latest.pegel >= WP_warning && latest.pegel < WP_danger ? "Die Erde ist mit ausreichend Wasser gesätigt" : ""}${latest.pegel >= WP_danger ? "Achtung!!! Die Erde hat zu viel Wasser" : ""}${latest.pegel < 100 ? "Kein Standwasser!" : ""}`}
+            <span className={` ${`${latest.pegel >= WP_warning && latest.pegel < WP_danger ? "text-yellow-400" : ""}`} ${latest.pegel > WP_danger ? "text-red-600":""}${latest.pegel <100 ? "text-green-600":""}`}>
+            {`${latest.pegel >= WP_warning && latest.pegel < WP_danger ?  "Die Erde ist mit ausreichend Wasser gesätigt" : ""}${latest.pegel >= WP_danger ? "Achtung!!! Die Erde hat zu viel Wasser" : ""}${latest.pegel < 100  ? "Kein Standwasser!" : ""}`}
             </span>
           </div>
-          <div className={`latestFeuchte `}>{`Aktueller Bodenfeuchte Wert:\n `}
-            <span className={` ${`${latest.feuchte < preset["rot"] ? "text-red-600" : ""}${latest.feuchte <= preset["gruen"] && latest.feuchte >= preset?.rot ? "text-yellow-400" : ""}${latest.feuchte > preset["gruen"] ? "text-green-400" : ""}`}`}>{`${latest.feuchte}%`}
-            </span>
-          </div>
-        </div>
-        <div className="LineChart" >
          
+        </div> 
+        <div className="LineChart" >
 
           <Line options={options} data={data} />
         </div>

@@ -12,13 +12,11 @@ while (True):
     prozent_bofeu = arduino.readline().strip()
     time.sleep(2)
     prozent_wape = arduino.readline().strip()
-    
-    bodenfeuchte = prozent_bofeu
-    wasserpegel = prozent_wape
-    
-    
     prozent_bofeu = int(prozent_bofeu)
     prozent_wape = int(prozent_wape)
+    if prozent_bofeu <0 or prozent_wape <0:
+        prozent_bofeu = 0
+        prozent_wape = 0
     
  
     print(prozent_bofeu, prozent_wape)

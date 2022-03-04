@@ -5,7 +5,6 @@
     justify-content: center;
     flex: 1 0 auto;
     margin-top: 5rem;
-    margin-left: 6rem;
 }
 
 .wrapper .inner {
@@ -44,17 +43,19 @@
 
 @media (max-width: 768px) {
     .wrapper {
-        margin-left: 0px;
-        margin-top: 1rem;
-        margin-left: 56px;
-        width: 500px;
-        flex-direction: row;
+        display: block;
+        margin:2rem 4rem auto;
+        width: 155vmin;
+
         justify-content: center;
     }
     .wrapper .inner {
         justify-content: center;
         margin-left: 0px;
-        width: 65%;
+        left:0;
+        right:0;
+        
+        
     }
     .wrapper .sensorWrapper{
         display:flex;
@@ -62,11 +63,19 @@
     }
     .latestFeuchte {
         width: 100%;
-        margin-top:5px;
+        margin-top:0.5rem; 
+        font-size: 20px;
+
     }
     .latestPegel {
-        width: 100%;
-        
+        width: 100%; 
+        font-size: 20px;
+        margin-top:1rem; 
     }
-    
+    .LineChart {
+        margin-top:1rem;
+        height: 350px;
+       
+    }
 }
+    

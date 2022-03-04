@@ -6,7 +6,6 @@ import Navbar from "../Components/Navbar/Navbar";
 import Settings from "../Components/settings/Settings";
 import drainContext from "./drainContext";
 import axios from "axios";
-import Query from "../Components/query"
 //charts weg machen wenn bestimmte breite und nur werte machen
 export default function Routing() {
   const [drain, setDrain] = useState(null);
@@ -30,7 +29,6 @@ export default function Routing() {
           <Routes>
            
             <Route path="/" exact element={<Sensor />} />
-            <Route path="/query" exact element={ <Query/>}/>
             <Route path="/settings" exact element={<Settings />} />
           </Routes>
         </div>

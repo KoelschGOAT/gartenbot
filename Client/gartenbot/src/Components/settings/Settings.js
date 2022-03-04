@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useContext} from 'react';
+import React, { useContext} from 'react';
 import axios from "axios";
 import { InputLabel, Select, MenuItem, FormControl } from "@mui/material";
 import "./Settings.css";
@@ -8,7 +8,7 @@ import drainContext from "../../utils/drainContext";
 
 const Settings = () => {
   const {drain,setDrain}= useContext(drainContext);
-  
+  window.title ="Einstellungen";
   
 
 
